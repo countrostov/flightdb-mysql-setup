@@ -2,6 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 from Connector_Close import *
 from Create_Tables import *
+from execute_sql_command import *
 
 try:
     connection = mysql.connector.connect(host='localhost',
@@ -19,5 +20,7 @@ try:
 except Error as e:
     print("Error while connecting to MySQL", e)
 
-create_tables(cursor)
+database = 'flightDB'
+#execute_sql_command (cursor , database, query)
+create_tables(cursor, database)
 connection_close(cursor, connection)
