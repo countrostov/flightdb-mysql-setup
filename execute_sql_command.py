@@ -1,4 +1,4 @@
-def execute_sql_command(cursor, database, query):
+def execute_sql_command(cursor, connection , database, query):
 
     import mysql.connector
 

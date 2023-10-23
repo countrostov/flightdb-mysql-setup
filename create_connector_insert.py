@@ -3,6 +3,7 @@ from mysql.connector import Error
 from Connector_Close import *
 from Create_Tables import *
 from execute_sql_command import *
+from insert_query import *
 
 try:
     connection = mysql.connector.connect(host='localhost',
@@ -21,19 +22,7 @@ except Error as e:
     print("Error while connecting to MySQL", e)
 
 database = 'flightDB'
-query = {}
-query['customer'] = (
-        "CREATE TABLE `customer` ("
-        "  `phone_number` INT(255) NOT NULL,"
-        "  `first_name` varchar(14) NOT NULL,"
-        "  `last_name` varchar(16) NOT NULL,"
-        "  `birth_date` date NOT NULL,"
-        "  `gender` enum('M','F') NOT NULL,"
-        "  `house_number` SMALLINT(255) NOT NULL,"
-        "  `street` varchar(14) NOT NULL,"
-        "  `city` varchar(14) NOT NULL,"
-        "  `emergency_contact` INT(255) NOT NULL,"
-        "  PRIMARY KEY (`phone_number`)"
-        ") ")
-execute_sql_command (cursor ,connection, database, query)
+emp_id = cursor.lastrowid
+data = (emp_id, 'Count', 'Rostov', 'Air Russia', 'flight_manager', '1000000003')
+insert_query(cursor, connection , database, data)
 connection_close(cursor, connection)
