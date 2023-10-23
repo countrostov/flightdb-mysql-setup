@@ -44,9 +44,9 @@ def create_tables(cursor, database):
 
     TABLES['flight'] = (
         "CREATE TABLE `flight` ("
-        "  `flight_id` INT(255) NOT NULL,"
-        "  `from` varchar(16) NOT NULL,"
-        "  `to` varchar(16) NOT NULL,"
+        "  `flight_id` varchar(10) NOT NULL,"
+        "  `from_destination` varchar(16) NOT NULL,"
+        "  `to_destination` varchar(16) NOT NULL,"
         "  `seat_capacity` INT(255) NOT NULL,"
         "  `travel_time` INT(255) NOT NULL,"
         "  `cost` INT(255) NOT NULL,"        
@@ -57,11 +57,12 @@ def create_tables(cursor, database):
 
     TABLES['flight_schedule'] = (
         "CREATE TABLE `flight_schedule` ("
-        "  `flight_id` INT(255) NOT NULL,"
+        "  `flight_id` varchar(10) NOT NULL,"
+        "  `flightschedule_id` INT(255) NOT NULL AUTO_INCREMENT,"
         "  `start_date` date NOT NULL,"
         "  `reaching_date` date NOT NULL,"
-        "  CONSTRAINT `PK_flight_schedule` PRIMARY KEY (`start_date`,`reaching_date` ),"
-        "  FOREIGN KEY (`flight_id`) REFERENCES `flight`(`flight_id`)"
+        "   PRIMARY KEY (`flightschedule_id`),"
+        "   FOREIGN KEY (`flight_id`) REFERENCES `flight`(`flight_id`)"
         ") ")
 
 
@@ -70,14 +71,13 @@ def create_tables(cursor, database):
         "  `bid` INT(255) NOT NULL AUTO_INCREMENT,"
         "  `no_of_seats` INT(255) NOT NULL,"
         "  `customer` INT(255) NOT NULL,"
-        "  `flight_id` INT(255) NOT NULL,"
+        "  `flight_id` varchar(10) NOT NULL,"
         "  `boarding_status` enum('y','n') NOT NULL,"
-        "  `start_date` date NOT NULL,"
-        "  `reaching_date` date NOT NULL,"
+        "  `flightschedule_id` INT(255) NOT NULL,"
         "  PRIMARY KEY (`bid`),"
         "  FOREIGN KEY (`flight_id`) REFERENCES `flight`(`flight_id`),"
         "  FOREIGN KEY (`customer`) REFERENCES `customer`(`phone_number`),"
-        "  FOREIGN KEY (`start_date`, `reaching_date`) REFERENCES `flight_schedule`(`start_date`, `reaching_date`)"
+        "  FOREIGN KEY (`flightschedule_id`) REFERENCES `flight_schedule`(`flightschedule_id`)"
         ") ")
 
     TABLES['copassenger_list'] = (
