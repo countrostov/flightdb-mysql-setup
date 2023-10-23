@@ -1,4 +1,4 @@
-def search_query(cursor, connection , database,query):
+def search_query(cursor, connection , database,query, query_data):
 
     import mysql.connector
 
@@ -7,12 +7,9 @@ def search_query(cursor, connection , database,query):
     # hire_start = datetime.date(1999, 1, 1)
     # hire_end = datetime.date(1999, 12, 31)
 
-    query = ("SELECT first_name, last_name, birth_date FROM customer "
-             "WHERE gender=%s")
-
     try:
         print("Executing Search query", query)
-        cursor.execute(query, ['M'])
+        cursor.execute(query, query_data)
     except mysql.connector.Error as err:
         print(err.msg)
 

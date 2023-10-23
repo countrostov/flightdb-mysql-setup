@@ -30,7 +30,9 @@ except Error as e:
 # insert_data = (dep_id, 'san', 'tha', '1100000011', '1000000001')
 
 database = 'flightDB1'
-query = {}
-search_query(cursor, connection , database,query)
+query = ("SELECT first_name, last_name, birth_date FROM customer "
+             "WHERE last_name=%s or first_name= %s")
+query_data = ['sri','']
+search_query(cursor, connection , database,query, query_data)
 
 connection_close(cursor, connection)
