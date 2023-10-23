@@ -21,7 +21,7 @@ try:
 except Error as e:
     print("Error while connecting to MySQL", e)
 
-database = 'flightDB'
+database = 'flightDB1'
 #flight_manager
 # emp_id = cursor.lastrowid
 # query = ("INSERT INTO flight_manager "
