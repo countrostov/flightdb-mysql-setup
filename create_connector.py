@@ -6,7 +6,7 @@ from execute_sql_command import *
 
 try:
     connection = mysql.connector.connect(host='localhost',
-                                         database='flightDB',
+                                         database='flightDB1',
                                          user='root',
                                          password='flightDB')
     if connection.is_connected():
