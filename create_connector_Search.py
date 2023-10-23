@@ -30,9 +30,13 @@ except Error as e:
 # insert_data = (dep_id, 'san', 'tha', '1100000011', '1000000001')
 
 database = 'flightDB1'
-query = ("SELECT first_name, last_name, birth_date FROM customer "
-             "WHERE last_name=%s or first_name= %s")
-query_data = ['sri','']
+query = ("SELECT f.flight_id, f.from_destination, f.to_destination , f.travel_time , f.cost  ,"
+         "fs.start_date, fs.reaching_date "
+         "FROM flight f , flight_schedule fs "
+         "WHERE  f.flight_id = fs.flight_id and "
+         "f.from_destination=%s and  f.to_destination= %s and fs.start_date=%s "
+         )
+query_data = ['Bengaluru','frankfurt', ' 2023-11-3']
 search_query(cursor, connection , database,query, query_data)
 
 connection_close(cursor, connection)
