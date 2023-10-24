@@ -13,8 +13,10 @@ def search_query(cursor, connection , database,query, query_data):
     except mysql.connector.Error as err:
         print(err.msg)
 
-    for (flight_id, from_destination, to_destination , travel_time , cost, start_date, reaching_date ) in cursor:
-        print((flight_id, from_destination, to_destination , travel_time , cost, start_date, reaching_date))
+    #for (flight_id, from_destination, to_destination , travel_time , cost, start_date, reaching_date ) in cursor:
+       # print((flight_id, from_destination, to_destination , travel_time , cost, start_date, reaching_date))
 
     print("Data Read successfully ")
+
+    return cursor
 
