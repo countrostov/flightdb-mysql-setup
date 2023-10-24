@@ -29,7 +29,7 @@ database = 'flightDB1'
 query = ("INSERT INTO copassenger_list "
         "(bid ,dep_id ) "
         "VALUES (%s, %s)")
-insert_data = ('2', '2' )
+insert_data = ('3', '3' )
 
 insert_query(cursor, connection , database,query, insert_data)
 

@@ -38,8 +38,7 @@ query = ("SELECT c.last_name,c.first_name, c.phone_number , b.bid , b.boarding_s
          "WHERE  b.bid = %s and b.customer = c.phone_number and b.flightschedule_id = fs.flightschedule_id  "
          "and fs.flight_id = f.flight_id  "
          )
-query_data = ['1']
-
+query_data = ['3']
 search_query_bookinglist (cursor, connection , database,query, query_data)
 
 database = 'flightDB1'
@@ -47,7 +46,7 @@ query = ("SELECT c.last_name,c.first_name, c.cust , cp.bid "
          "FROM copassenger c , copassenger_list cp "
          "WHERE  cp.bid = %s and cp.dep_id = c.dep_id  "
          )
-query_data = ['1']
+query_data = ['3']
 
 search_query_bookinglist (cursor, connection , database,query, query_data)
 
