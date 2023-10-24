@@ -20,7 +20,15 @@ try:
 except Error as e:
     print("Error while connecting to MySQL", e)
 
-database = 'flightDB'
-#execute_sql_command (cursor , database, query)
-create_tables(cursor, database)
+database = 'flightDB1'
+query = ("SELECT * FROM flight ")
+cursor_temp = execute_sql_command (cursor ,connection, database, query)
+records  = cursor_temp.fetchall()
+for row in records:
+    print (row)
+
+    print("Data Read successfully ")
+
+
+#create_tables(cursor, database)
 connection_close(cursor, connection)

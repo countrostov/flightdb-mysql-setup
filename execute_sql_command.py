@@ -18,12 +18,14 @@ def execute_sql_command(cursor, connection , database, query):
     #     "  PRIMARY KEY (`phone_number`)"
     #     ") ")
 
-    for table_name in TABLES:
-        table_description = TABLES[table_name]
-        try:
-            print("Executing query",table_description)
-            cursor.execute(table_description)
-        except mysql.connector.Error as err:
-            print(err.msg)
-        print("SQL query executed successfully")
+    #for table_name in TABLES:
+        #table_description = TABLES[table_name]
+    try:
+        print("Executing query",query)
+        cursor.execute(query)
+    except mysql.connector.Error as err:
+        print(err.msg)
 
+    print("SQL query executed successfully")
+
+    return cursor
