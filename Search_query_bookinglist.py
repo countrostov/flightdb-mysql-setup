@@ -13,16 +13,10 @@ def search_query_bookinglist(cursor, connection , database,query, query_data):
     except mysql.connector.Error as err:
         print(err.msg)
 
-
-    # if len(records) ==0 :
-    #     print(" No data for the query available")
-    # else:
-    # for (last_name,phone_number , bid ) in cursor:
-    #      print((last_name,phone_number , bid))
-
-    records  = cursor.fetchall()
-    for row in records:
-        print (row)
+    # records  = cursor.fetchall()
+    # for row in records:
+    #     print (row)
 
     print("Data Read successfully ")
+    return cursor
 

@@ -26,7 +26,7 @@ except Error as e:
 
 database = 'flightDB1'
 
-insert_data = ('2', '1000000002','N','5')
+insert_data = ('6', '1000000000','N','3')
 book_flight(cursor, connection , database,insert_data)
 
 connection_close(cursor, connection)
