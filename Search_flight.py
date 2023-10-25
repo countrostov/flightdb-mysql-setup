@@ -4,7 +4,7 @@ def search_flight(cursor, connection , database, query_data):
     from Search_query import search_query
 
 
-    query = ("SELECT f.flight_id, f.from_destination, f.to_destination , f.travel_time , f.cost  ,"
+    query = ("SELECT f.flight_id, fs.flightschedule_id, f.from_destination, f.to_destination , f.travel_time , f.cost  ,"
              "fs.start_date, fs.reaching_date "
              "FROM flight f , flight_schedule fs "
              "WHERE  f.flight_id = fs.flight_id and "

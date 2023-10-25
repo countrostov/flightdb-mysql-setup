@@ -9,6 +9,7 @@ from execute_sql_command import *
 from insert_query import *
 from insert_flight import *
 from insert_flight_schedule import *
+from Search_flight import *
 
 try:
     connection = mysql.connector.connect(host='localhost',
@@ -54,9 +55,52 @@ while (input("Do you want to continue ? (y/n)")=='y'):
                     insert_flight_schedule(cursor, connection, database, insert_data)
 
         case 2:
-            print( "2")
+            print(
+                "SEARCH A FLIGHT FOR THE REQUIRED DATE\n"
+                "Insert you data separated by space in this order : from_destination to_destination start_date :\n"
+                "Example : Bengaluru Paris 2023-12-10 \n")
+            query_data = tuple(input().split())
+            search_flight(cursor, connection, database, query_data)
+            records = cursor.fetchall()
+            for row in records:
+                print (row)
         case 3:
-            print( "3")
+            #search for a flight
+            print("BOOKING A FLIGHT - SIGN IN TO BOOK A FLIGHT\n")
+            customer = input(print("Enter customer phone number : "))
+            print(
+                "BOOKING A FLIGHT - SEARCH A FLIGHT FOR THE REQUIRED DATE\n"
+                "Insert you data separated by space in this order : from_destination to_destination start_date :\n"
+                "Example : Bengaluru Paris 2023-12-10 \n")
+            query_data = tuple(input().split())
+            search_flight(cursor, connection, database, query_data)
+            records = cursor.fetchall()
+            for row in records:
+                print(row)
+            #book a flight for customer
+            print(
+                "BOOKING A FLIGHT \n"
+                "Choose from the available flights to book: no_of_seats flightschedule_id  :\n"
+                "Example : 2   \n")
+            insert_data = (input().split())
+            insert_data.insert(1 , customer)
+            insert_data.insert(2, 'N')
+            insert_data1 = tuple(insert_data)
+            book_flight(cursor, connection, database, insert_data1)
+            #copassenger booking
+            if insert_data1[0]>1 :
+                for cp in insert_data[0]-1:
+                    print(
+                        "Enter details of copassenger  \n"
+                        "Choose from the available flights to book: no_of_seats flightschedule_id  :\n"
+                        "Example : 2   \n")
+                    insert_data = (input().split())
+                    insert_data.insert(1, customer)
+                    insert_data.insert(2, 'N')
+                    insert_data1 = tuple(insert_data)
+                    book_flight(cursor, connection, database, insert_data1)
+
+
         case 4:
             print("two")
         case 5:
