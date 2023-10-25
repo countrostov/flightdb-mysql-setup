@@ -10,6 +10,8 @@ from insert_query import *
 from insert_flight import *
 from insert_flight_schedule import *
 from Search_flight import *
+from insert_copassenger import *
+from book_flight_copassenger import *
 
 try:
     connection = mysql.connector.connect(host='localhost',
@@ -87,18 +89,23 @@ while (input("Do you want to continue ? (y/n)")=='y'):
             insert_data.insert(2, 'N')
             insert_data1 = tuple(insert_data)
             book_flight(cursor, connection, database, insert_data1)
+            bid  = cursor.lastrowid
             #copassenger booking
-            if insert_data1[0]>1 :
-                for cp in insert_data[0]-1:
+            if int(insert_data1[0])>1 :
+                for cp in range(int(insert_data[0])-1):
                     print(
-                        "Enter details of copassenger  \n"
-                        "Choose from the available flights to book: no_of_seats flightschedule_id  :\n"
-                        "Example : 2   \n")
+                        "Enter details of copassenger "
+                        "first_name,last_name, emergency_contact\n"
+                        "Example : Kumar Aravind 1000000045   \n")
                     insert_data = (input().split())
-                    insert_data.insert(1, customer)
-                    insert_data.insert(2, 'N')
+                    insert_data.insert(2, customer)
                     insert_data1 = tuple(insert_data)
-                    book_flight(cursor, connection, database, insert_data1)
+
+                    insert_copassenger(cursor, connection, database, insert_data1)
+
+                    depid = cursor.lastrowid
+                    insert_data = (bid , depid)
+                    book_flight_copassenger(cursor, connection, database, insert_data)
 
 
         case 4:
