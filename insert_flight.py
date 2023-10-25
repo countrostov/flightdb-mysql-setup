@@ -1,4 +1,4 @@
-def insert_flight(cursor, connection , database, insert_data, insert_data1):
+def insert_flight(cursor, connection , database, insert_data):
     from insert_query import insert_query
     #flight
     query = ("INSERT INTO flight "
@@ -8,10 +8,4 @@ def insert_flight(cursor, connection , database, insert_data, insert_data1):
 
     insert_query(cursor, connection , database,query , insert_data)
 
-    #flight_schedule
-    flightschedule_id = cursor.lastrowid
-    query = ("INSERT INTO flight_schedule "
-             "(flightschedule_id ,start_date, reaching_date,flight_id) "
-             "VALUES (%s, %s, %s, %s)")
-    insert_data2 = (flightschedule_id,) + insert_data1
-    insert_query(cursor, connection , database,query , insert_data2)
+
