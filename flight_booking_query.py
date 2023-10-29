@@ -9,3 +9,4 @@ def flight_booking_query(cursor, connection , database,query, insert_data):
 
     print("Data inserted successfully ")
 
+    return cursor

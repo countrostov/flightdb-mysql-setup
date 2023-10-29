@@ -8,7 +8,7 @@ def book_flight(cursor, connection , database, insert_data):
             "(bid ,no_of_seats, customer, boarding_status,flightschedule_id ) "
             "VALUES (%s, %s, %s, %s, %s)")
     insert_data1 = (bid,) + insert_data
-    flight_booking_query(cursor, connection , database,query, insert_data1)
-
+    cursor = flight_booking_query(cursor, connection , database,query, insert_data1)
+    cursor.lastrowid
     return cursor
 

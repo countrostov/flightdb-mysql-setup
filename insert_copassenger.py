@@ -12,5 +12,5 @@ def insert_copassenger(cursor, connection , database, insert_data):
     #insert_data = (dep_id, 'san', 'tha', '1100000011', '1000000001')
 
 
-    insert_query(cursor, connection , database,query , insert_data1)
+    cursor = insert_query(cursor, connection , database,query , insert_data1)
     return cursor

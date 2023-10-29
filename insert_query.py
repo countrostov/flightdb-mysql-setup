@@ -9,3 +9,4 @@ def insert_query(cursor, connection , database,insert_query, insert_data):
 
     #print("Data inserted successfully ")
 
+    return cursor

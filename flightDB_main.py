@@ -48,7 +48,7 @@ while (input("Do you want to continue ? (y/n)")=='y'):
             match (int(input(print("1: flight creation \n 2: flight schedule creation\n Provide your choice : ")))):
                 case 1:
 
-                    print("Insert you data separated by space in this order : flight_id, from_destination, to_destination,"
+                    print("Insert your data separated by space in this order : flight_id, from_destination, to_destination,"
                           "seat_capacity, travel_time, cost, emp_id: \n")
                     insert_data = tuple(input().split())
                     insert_flight(cursor, connection , database, insert_data)
@@ -63,11 +63,13 @@ while (input("Do you want to continue ? (y/n)")=='y'):
         case 2:
             print(
                 "SEARCH A FLIGHT FOR THE REQUIRED DATE\n"
-                "Insert you data separated by space in this order : from_destination to_destination start_date :\n"
+                "Insert your data separated by space in this order : from_destination to_destination start_date :\n"
                 "Example : Bengaluru Paris 2023-12-10 \n")
             query_data = tuple(input().split())
             search_flight(cursor, connection, database, query_data)
             records = cursor.fetchall()
+            print("f.flight_id  fs.flightschedule_id  f.from_destination  f.to_destination  f.travel_time  f.cost "
+                  "fs.start_date  fs.reaching_date ")
             for row in records:
                 print (row)
         case 3:
@@ -81,19 +83,21 @@ while (input("Do you want to continue ? (y/n)")=='y'):
             query_data = tuple(input().split())
             search_flight(cursor, connection, database, query_data)
             records = cursor.fetchall()
+            print("f.flight_id  fs.flightschedule_id  f.from_destination  f.to_destination  f.travel_time  f.cost "
+                  "fs.start_date  fs.reaching_date ")
             for row in records:
                 print(row)
             #book a flight for customer
             print(
                 "BOOKING A FLIGHT \n"
                 "Choose from the available flights to book: "
-                "Enter : Number of Seats Flightschedule ID  :\n"
+                "Enter : Number of Seats Flightschedule ID separated by a space :\n"
                 "Example : 2 26   \n")
             insert_data = (input().split())
             insert_data.insert(1 , customer)
             insert_data.insert(2, 'N')
             insert_data1 = tuple(insert_data)
-            cursor = book_flight(cursor, connection, database, insert_data1)
+            book_flight(cursor, connection, database, insert_data1)
             bid  = cursor.lastrowid
             #copassenger booking
             if int(insert_data1[0])>1 :
@@ -105,7 +109,8 @@ while (input("Do you want to continue ? (y/n)")=='y'):
                     insert_data = (input().split())
                     insert_data.insert(3, customer)
                     insert_data1 = tuple(insert_data)
-                    cursor = insert_copassenger(cursor, connection, database, insert_data1)
+                    a = cursor.lastrowid
+                    insert_copassenger(cursor, connection, database, insert_data1)
                     depid = cursor.lastrowid
                     insert_data = (bid , depid)
                     book_flight_copassenger(cursor, connection, database, insert_data)
@@ -121,14 +126,15 @@ while (input("Do you want to continue ? (y/n)")=='y'):
             query_data = tuple(input().split())
             search_booking(cursor, connection, database, query_data)
             records = cursor.fetchall()
+            print("bid, no_of_seats, customer , boarding_status , flightschedule_id \n")
             for row in records:
                 print(row)
             # Selecting and cancelling a booking
             print(
                 "CANCELLING A BOOKING \n"
-                "Choose from the available booking to cancel: \n"
+                "Choose the booking to cancel: \n Example : 2 \n"
                 " bid, no_of_seats, customer , boarding_status , flightschedule_id \n"
-                "Example : 2   \n")
+                " \n")
             delete_data = (input().split())
             delete_booking(cursor, connection , database, delete_data)
 
