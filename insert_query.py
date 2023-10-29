@@ -7,5 +7,5 @@ def insert_query(cursor, connection , database,insert_query, insert_data):
     except mysql.connector.Error as err:
         print(err.msg)
 
-    print("Data inserted successfully ")
+    #print("Data inserted successfully ")
 

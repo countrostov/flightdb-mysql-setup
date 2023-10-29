@@ -11,6 +11,8 @@ from insert_flight import *
 from insert_flight_schedule import *
 from Search_flight import *
 from insert_copassenger import *
+from Search_booking import *
+from delete_booking import *
 from book_flight_copassenger import *
 
 try:
@@ -109,7 +111,29 @@ while (input("Do you want to continue ? (y/n)")=='y'):
 
 
         case 4:
-            print("two")
+            #cancel a flight booking + copassengers
+
+            print(
+                "Cancel a Booking - SEARCH A booking FOR THE CUSTOMER\n"
+                "Insert your  phone number : \n"
+                "Example : 1000000000 \n")
+            query_data = tuple(input().split())
+            search_booking(cursor, connection, database, query_data)
+            records = cursor.fetchall()
+            for row in records:
+                print(row)
+            # Selecting and cancelling a booking
+            print(
+                "CANCELLING A BOOKING \n"
+                "Choose from the available booking to cancel: \n"
+                " bid, no_of_seats, customer , boarding_status , flightschedule_id \n"
+                "Example : 2   \n")
+            delete_data = (input().split())
+            delete_booking(cursor, connection , database, delete_data)
+
+            print(
+                "Booking with following booking Id cancelled:", delete_data)
+
         case 5:
             print("two")
         case default:

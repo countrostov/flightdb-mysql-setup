@@ -1,11 +1,11 @@
-def insert_query(cursor, connection , database,insert_query, insert_data):
-    import mysql.connector
-    try:
-        print("Executing query", insert_query)
-        cursor.execute(insert_query, insert_data)
-        connection.commit()
-    except mysql.connector.Error as err:
-        print(err.msg)
+def delete_booking(cursor, connection , database, delete_data):
 
-    print("Data deleted successfully ")
+    import mysql.connector
+    from insert_query import insert_query
+    query = ("DELETE FROM booking "
+             "WHERE bid = %s "
+             )
+
+    insert_query(cursor, connection, database, query, delete_data)
+
 
