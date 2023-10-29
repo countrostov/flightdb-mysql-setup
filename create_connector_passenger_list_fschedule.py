@@ -39,7 +39,7 @@ query = ("SELECT c.last_name,c.first_name, c.phone_number , b.bid , b.boarding_s
          "b.flightschedule_id = fs.flightschedule_id  "
          "and fs.flight_id = f.flight_id  "
          )
-query_data = ['3']
+query_data = ['32']
 cursor = search_query_bookinglist (cursor, connection , database,query, query_data)
 records  = cursor.fetchall()
 for row in records:
@@ -51,7 +51,7 @@ query = ("SELECT c.last_name,c.first_name, c.cust , cp.bid "
          "WHERE  b.flightschedule_id = fs.flightschedule_id and fs.flightschedule_id = %s and b.bid = cp.bid "
          "and cp.dep_id = c.dep_id  "
          )
-query_data = ['3']
+query_data = ['32']
 
 search_query_bookinglist (cursor, connection , database,query, query_data)
 records  = cursor.fetchall()

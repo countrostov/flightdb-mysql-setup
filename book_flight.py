@@ -10,3 +10,5 @@ def book_flight(cursor, connection , database, insert_data):
     insert_data1 = (bid,) + insert_data
     flight_booking_query(cursor, connection , database,query, insert_data1)
 
+    return cursor
+

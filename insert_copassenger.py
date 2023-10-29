@@ -13,3 +13,4 @@ def insert_copassenger(cursor, connection , database, insert_data):
 
 
     insert_query(cursor, connection , database,query , insert_data1)
+    return cursor

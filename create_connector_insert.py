@@ -43,10 +43,10 @@ database = 'flightDB1'
 # insert_data = (flightschedule_id, '2023-11-3', '2023-11-4','LH102')
 
 #Customer
-# query = ("INSERT INTO customer "
-#          "(phone_number ,first_name,last_name, birth_date, gender ,house_number, street, city,emergency_contact) "
-#          "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
-# insert_data = ('1000000002', 'sanj', 'sri','2000-10-15', 'M', '12', ' 21 st street' , ' Bengaluru' , '1100000001')
+query = ("INSERT INTO customer "
+         "(phone_number ,first_name,last_name, birth_date, gender ,house_number, street, city,emergency_contact) "
+         "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
+insert_data = ('1000000004', 'Grace', 'Hopper','1980-10-15', 'M', '12', ' 2 st street' , ' New York' , '1100000001')
 
 # #copassenger
 # dep_id = cursor.lastrowid
