@@ -98,7 +98,7 @@ while (input("Do you want to continue ? (y/n)")=='y'):
                         "first_name,last_name, emergency_contact\n"
                         "Example : Kumar Aravind 1000000045   \n")
                     insert_data = (input().split())
-                    insert_data.insert(2, customer)
+                    insert_data.insert(3, customer)
                     insert_data1 = tuple(insert_data)
 
                     insert_copassenger(cursor, connection, database, insert_data1)
